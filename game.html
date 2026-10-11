@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/battlefield.css" />
 </head>
 <body class="game-page">
   <header class="game-page__header">
@@ -57,39 +58,14 @@
       </div>
     </section>
 
-    <section class="chapter chapter-arena game-page__arena" data-arena aria-label="Playable Kurukshetra battlefield">
+    <section class="chapter chapter-arena game-page__arena" aria-label="Playable Kurukshetra battlefield">
       <div class="arena__intro">
-        <p class="arena__eyebrow">Interactive strategy · Play as the Pandavas</p>
-        <h2 class="arena__heading">Command the Field</h2>
-        <p class="arena__lede">Select a Pandava, move to a green square, then strike a red-highlighted rival. You can move and attack once each round.</p>
+        <p class="arena__eyebrow">Interactive 8×8 Tactical Strategy · Command the Pandavas</p>
+        <h2 class="arena__heading">The Kurukshetra Battlefield</h2>
+        <p class="arena__lede">Direct Yudhishthira, Bhima, and Arjuna across the sacred 8×8 tactical field. Maneuver into position, strike the Kaurava commanders, and force their retreat.</p>
       </div>
 
-      <div class="arena">
-        <div class="arena__topline">
-          <div class="arena__score" aria-label="Battle status">
-            <span class="arena__round" data-round>Round 1</span>
-            <span class="arena__turn" data-turn>Pandavas · Your turn</span>
-          </div>
-          <button class="arena__restart" type="button" data-restart>New battle</button>
-        </div>
-
-        <div class="arena__sides" aria-hidden="true">
-          <span class="arena__side arena__side--pandava">Pandavas</span>
-          <span class="arena__side arena__side--kaurava">Kauravas · Computer</span>
-        </div>
-        <div class="arena__board" data-board role="grid" aria-label="Kurukshetra battlefield. Select one of your champions, then choose a highlighted square to move and a highlighted rival to attack."></div>
-        <div class="arena__legend" aria-label="Board highlights">
-          <span><i class="arena__legend-mark arena__legend-mark--move" aria-hidden="true"></i>Move</span>
-          <span><i class="arena__legend-mark arena__legend-mark--attack" aria-hidden="true"></i>Attack in range</span>
-        </div>
-
-        <div class="arena__bottomline">
-          <p class="arena__instruction" data-instruction aria-live="polite">Select a Pandava to see available actions.</p>
-          <button class="arena__endturn" type="button" data-end-turn>Finish turn</button>
-        </div>
-        <div class="arena__roster" data-roster aria-label="Champion health"></div>
-        <p class="arena__log" data-log aria-live="polite">The armies await your command.</p>
-      </div>
+      <div class="arena-mount" data-arena></div>
     </section>
   </main>
 

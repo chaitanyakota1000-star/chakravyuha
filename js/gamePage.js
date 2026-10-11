@@ -1,3 +1,5 @@
-import { initKurukshetraGame } from './kurukshetraGame.js';
+import { initBattlefieldGame } from './battlefield/battlefieldGame.js';
 
-document.addEventListener('DOMContentLoaded', initKurukshetraGame);
+document.addEventListener('DOMContentLoaded', () => {
+  initBattlefieldGame();
+});
