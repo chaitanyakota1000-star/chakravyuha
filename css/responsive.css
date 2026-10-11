@@ -1,0 +1,183 @@
+/* ===========================================================
+   RESPONSIVE — full pass across every chapter (Split 4).
+   Breakpoints: 1024px (tablet) and 720px (mobile). Locomotive
+   Scroll already runs with smoothMobile:false, so touch devices
+   get native scrolling — these rules are purely visual/layout.
+   =========================================================== */
+
+@media (pointer: coarse) {
+  /* Touch devices never see the custom cursor */
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ---------- Tablet (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .character-card {
+    flex-basis: clamp(280px, 42vw, 340px);
+  }
+
+  .road__army {
+    width: 50%;
+  }
+
+  .kurukshetra__pin {
+    padding: var(--space-lg) var(--edge-pad);
+  }
+
+  .game-rules__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Mobile (≤720px) ---------- */
+@media (max-width: 720px) {
+  .chapter {
+    padding: var(--space-lg) var(--edge-pad);
+  }
+
+  /* Chapter 1 — Invocation */
+  .invocation__title {
+    max-width: 11ch;
+  }
+  .invocation__subtitle {
+    max-width: 32ch;
+  }
+  .invocation__scroll-cue {
+    bottom: var(--space-md);
+  }
+
+  /* Chapter 2 — The Beginning */
+  .beginning__layer--lines svg {
+    width: min(85vw, 420px);
+  }
+  .beginning__text {
+    font-size: 1.05rem;
+  }
+
+  /* Chapter 3 — The Great Characters */
+  .characters-carousel {
+    gap: var(--space-xs);
+  }
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  .character-card {
+    flex-basis: min(84vw, 310px);
+    padding: var(--space-sm);
+  }
+
+  /* Chapter 4 — The Dice Game */
+  .dice__panel {
+    padding-left: var(--space-sm);
+  }
+
+  /* Chapter 5 — Exile */
+  .exile__path-wrap {
+    width: min(85vw, 420px);
+  }
+
+  /* Chapter 6 — Road to War */
+  .road__army {
+    width: 58%;
+  }
+
+  /* Chapter 7 — Kurukshetra: pin duration is set entirely in JS
+     (kurukshetra.js's pinDistance()), which already accounts for
+     mobile. No min-height override here on purpose — see PROGRESS.md
+     for why an earlier version of this rule caused a blank-space bug. */
+  .kurukshetra__pin {
+    padding: var(--space-lg) var(--edge-pad);
+    gap: var(--space-md);
+  }
+  .war-fragment {
+    font-size: 1.5rem;
+  }
+
+  /* Interactive game: keep every square comfortably tappable. */
+  .chapter-arena {
+    min-height: auto;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+  .arena__cell {
+    aspect-ratio: 1;
+    padding: 0.08rem;
+  }
+  .arena__piece-name {
+    font-size: clamp(0.4rem, 1.8vw, 0.56rem);
+  }
+  .arena__bottomline {
+    align-items: flex-start;
+  }
+  .arena__instruction {
+    padding-top: 0.45rem;
+    font-size: 0.94rem;
+  }
+  .chapter-game-invite {
+    min-height: 58vh;
+  }
+  .game-page__main {
+    padding-right: max(1rem, var(--edge-pad));
+    padding-left: max(1rem, var(--edge-pad));
+  }
+
+  /* Chapter 8 — Bhagavad Gita */
+  .gita__chakra {
+    width: clamp(70px, 18vw, 110px);
+    height: clamp(70px, 18vw, 110px);
+  }
+  .gita__verse {
+    font-size: 1.05rem;
+  }
+
+  /* Chapter 9 — Aftermath */
+  .aftermath__text {
+    font-size: 1.05rem;
+  }
+
+  /* Chapter 10 — Closing */
+  .closing__chakra {
+    width: clamp(80px, 20vw, 120px);
+    height: clamp(80px, 20vw, 120px);
+  }
+
+  /* Chapter navigation rail: smaller, closer to the edge, and the
+     hover tooltip is dropped (hover doesn't mean much on touch —
+     the dots still work perfectly well as tap targets without it). */
+  .chapter-nav {
+    right: 0.6rem;
+    gap: 0.5rem;
+  }
+  .chapter-nav__dot {
+    width: 6px;
+    height: 6px;
+  }
+  .chapter-nav__tooltip {
+    display: none;
+  }
+}
+
+/* ---------- Small phones (≤380px) ---------- */
+@media (max-width: 380px) {
+  .game-rules__grid {
+    grid-template-columns: 1fr;
+  }
+  .game-rules__card {
+    min-height: auto;
+  }
+  .game-rules__goal {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .character-card {
+    flex-basis: 84vw;
+  }
+  .war-fragment {
+    font-size: 1.25rem;
+  }
+}

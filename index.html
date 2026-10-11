@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahabharat 2.0 — Interactive Epic Experience</title>
+  <meta name="description" content="A scroll-driven, cinematic retelling of the Mahabharata." />
+  <meta name="theme-color" content="#090807" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/svg/chakra.svg" />
+
+  <!-- Fonts: Cinzel (display) + Cormorant Garamond (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Locomotive Scroll base styles -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+  />
+</head>
+<body class="is-loading">
+  <!-- ===================== LOADER ===================== -->
+  <div class="loader">
+    <span class="loader__mark">MAHABHARAT</span>
+  </div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"><span class="cursor-label"></span></div>
+
+  <!-- ===================== AMBIENT OVERLAYS ===================== -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="color-wash" aria-hidden="true"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ===================== CHAPTER NAVIGATION ===================== -->
+  <nav class="chapter-nav" aria-label="Chapter navigation"></nav>
+
+  <!-- ===================== SCROLL CONTAINER ===================== -->
+  <main data-scroll-container>
+
+    <!-- ---------- CHAPTER 1: INVOCATION (KRISHNA & SUDARSHANA CHAKRA) ---------- -->
+    <section class="chapter chapter-invocation" data-scroll-section aria-label="Invocation">
+      <!-- Complete SVG stage locking Krishna artwork and 3D rotating Sudarshana Chakra together seamlessly -->
+      <div class="invocation__krishna-stage" aria-hidden="true">
+        <svg class="invocation__krishna-svg" viewBox="0 0 1024 576" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cyanAuraGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#cceeff" stop-opacity="0.95" />
+              <stop offset="30%" stop-color="#38b6ff" stop-opacity="0.75" />
+              <stop offset="65%" stop-color="#0066cc" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#001a4d" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="goldBloomGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="25%" stop-color="#fff275" stop-opacity="0.9" />
+              <stop offset="55%" stop-color="#ffb81c" stop-opacity="0.5" />
+              <stop offset="85%" stop-color="#e65100" stop-opacity="0.15" />
+              <stop offset="100%" stop-color="#bf360c" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="chakraHubGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="45%" stop-color="#ffd700" />
+              <stop offset="100%" stop-color="#e67e22" />
+            </radialGradient>
+            <filter id="auraBlur" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="16" />
+            </filter>
+            <filter id="bloomBlur" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+            </filter>
+            <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" />
+            </filter>
+            <filter id="sparkGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
+            </filter>
+          </defs>
+
+          <!-- Lord Krishna Artwork (clean wallpaper image without watermarks) -->
+          <image href="assets/img/krishna_sudarshana_clean.jpg" width="1024" height="576" class="invocation__krishna-bg" preserveAspectRatio="none" />
+
+          <!-- Divine Cyan Aura Behind Krishna's Crown & Head (centered at 512, 160) -->
+          <g transform="translate(512, 160)">
+            <g class="invocation__divine-aura">
+              <circle r="76" fill="url(#cyanAuraGrad)" filter="url(#auraBlur)" />
+            </g>
+          </g>
+
+          <!-- 3D Rotating Sudarshana Chakra hovering directly above Krishna's raised index finger (660, 64) -->
+          <g transform="translate(660, 64)">
+            <g class="invocation__chakra-stage">
+            <!-- Outer Golden Plasma Radiation Bloom -->
+            <ellipse class="chakra__glow-back" cx="0" cy="0" rx="98" ry="26" fill="url(#goldBloomGrad)" filter="url(#bloomBlur)" />
+            
+            <!-- 3D Perspective Elliptical Plane (horizontal disc matching Krishna's hand angle) -->
+            <g class="chakra__perspective" transform="scale(1, 0.25)">
+              <!-- Fast-spinning spokes & concentric rims (clockwise) -->
+              <g class="chakra__spin-layer">
+                <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="3.5s" repeatCount="indefinite" />
+                <circle r="70" fill="none" stroke="#ffd700" stroke-width="2.5" />
+                <circle r="56" fill="none" stroke="#ffeaa7" stroke-width="1.2" opacity="0.8" />
+                <circle r="42" fill="none" stroke="#ffd700" stroke-width="1.8" opacity="0.9" />
+                <circle r="26" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.75" />
+                <circle r="14" fill="none" stroke="#ffe066" stroke-width="0.9" opacity="0.6" />
+                <!-- 16 Golden Spokes -->
+                <line x1="15.00" y1="0.00" x2="68.00" y2="0.00" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="13.86" y1="5.74" x2="62.82" y2="26.02" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="10.61" y1="10.61" x2="48.08" y2="48.08" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="5.74" y1="13.86" x2="26.02" y2="62.82" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="0.00" y1="15.00" x2="0.00" y2="68.00" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-5.74" y1="13.86" x2="-26.02" y2="62.82" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-10.61" y1="10.61" x2="-48.08" y2="48.08" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-13.86" y1="5.74" x2="-62.82" y2="26.02" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-15.00" y1="0.00" x2="-68.00" y2="0.00" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-13.86" y1="-5.74" x2="-62.82" y2="-26.02" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-10.61" y1="-10.61" x2="-48.08" y2="-48.08" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-5.74" y1="-13.86" x2="-26.02" y2="-62.82" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="-0.00" y1="-15.00" x2="-0.00" y2="-68.00" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="5.74" y1="-13.86" x2="26.02" y2="-62.82" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="10.61" y1="-10.61" x2="48.08" y2="-48.08" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <line x1="13.86" y1="-5.74" x2="62.82" y2="-26.02" stroke="#ffe066" stroke-width="1.4" opacity="0.85" />
+                <circle r="12" fill="url(#chakraHubGrad)" filter="url(#coreGlow)" />
+                <circle r="5" fill="#ffffff" />
+              </g>
+
+              <!-- Counter-rotating flame saw-blades (counter-clockwise) -->
+              <g class="chakra__reverse-spin-layer">
+                <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="5.5s" repeatCount="indefinite" />
+                <polygon points="69.00,0.00 81.20,11.41 66.95,16.69" fill="#ffcc00" opacity="0.9" />
+                <polygon points="66.65,17.86 75.48,32.04 60.35,33.45" fill="#ffcc00" opacity="0.9" />
+                <polygon points="59.76,34.50 64.62,50.48 49.63,47.93" fill="#ffcc00" opacity="0.9" />
+                <polygon points="48.79,48.79 49.35,65.49 35.54,59.14" fill="#ffcc00" opacity="0.9" />
+                <polygon points="34.50,59.76 30.72,76.03 19.02,66.33" fill="#ffcc00" opacity="0.9" />
+                <polygon points="17.86,66.65 9.99,81.39 1.20,68.99" fill="#ffcc00" opacity="0.9" />
+                <polygon points="0.00,69.00 -11.41,81.20 -16.69,66.95" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-17.86,66.65 -32.04,75.48 -33.45,60.35" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-34.50,59.76 -50.48,64.62 -47.93,49.63" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-48.79,48.79 -65.49,49.35 -59.14,35.54" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-59.76,34.50 -76.03,30.72 -66.33,19.02" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-66.65,17.86 -81.39,9.99 -68.99,1.20" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-69.00,0.00 -81.20,-11.41 -66.95,-16.69" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-66.65,-17.86 -75.48,-32.04 -60.35,-33.45" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-59.76,-34.50 -64.62,-50.48 -49.63,-47.93" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-48.79,-48.79 -49.35,-65.49 -35.54,-59.14" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-34.50,-59.76 -30.72,-76.03 -19.02,-66.33" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-17.86,-66.65 -9.99,-81.39 -1.20,-68.99" fill="#ffcc00" opacity="0.9" />
+                <polygon points="-0.00,-69.00 11.41,-81.20 16.69,-66.95" fill="#ffcc00" opacity="0.9" />
+                <polygon points="17.86,-66.65 32.04,-75.48 33.45,-60.35" fill="#ffcc00" opacity="0.9" />
+                <polygon points="34.50,-59.76 50.48,-64.62 47.93,-49.63" fill="#ffcc00" opacity="0.9" />
+                <polygon points="48.79,-48.79 65.49,-49.35 59.14,-35.54" fill="#ffcc00" opacity="0.9" />
+                <polygon points="59.76,-34.50 76.03,-30.72 66.33,-19.02" fill="#ffcc00" opacity="0.9" />
+                <polygon points="66.65,-17.86 81.39,-9.99 68.99,-1.20" fill="#ffcc00" opacity="0.9" />
+              </g>
+            </g>
+
+            <!-- Divine Focal Light Ray & Spark connecting Krishna's fingertip at (1, 14) -->
+            <line x1="0" y1="4" x2="1" y2="14" stroke="#ffffff" stroke-width="2" opacity="0.95" filter="url(#sparkGlow)" />
+            <circle cx="1" cy="14" r="2.5" fill="#ffffff" filter="url(#sparkGlow)" />
+          </g>
+        </g>
+        </svg>
+      </div>
+
+      <!-- Ambient celestial brightness & radial vignette for cinematic contrast -->
+      <div class="invocation__ambient-glow" aria-hidden="true"></div>
+      <div class="invocation__vignette" aria-hidden="true"></div>
+
+      <div class="invocation__content">
+        <span class="invocation__sacred-shloka">॥ ॐ नमो भगवते वासुदेवाय ॥</span>
+        <h1 class="invocation__title">Before the war, there was a choice.</h1>
+        <p class="invocation__subtitle">An epic of duty, kinship, and the price of dharma.</p>
+        <div class="invocation__scroll-cue">
+          <span>Scroll to begin</span>
+          <div class="invocation__scroll-line" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 2: THE BEGINNING ---------- -->
+    <section class="chapter chapter-beginning" data-scroll-section aria-label="The Beginning">
+      <div class="beginning__layer beginning__layer--glow" data-scroll data-scroll-speed="1.5" aria-hidden="true"></div>
+      <div class="beginning__layer beginning__layer--lines" data-scroll data-scroll-speed="3" aria-hidden="true">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g class="lineage-lines" fill="none" stroke="currentColor">
+            <line x1="200.0" y1="8.0" x2="200.0" y2="70.0" stroke-width="1.6" opacity="1" />
+            <line x1="200.0" y1="70.0" x2="120.0" y2="108.0" stroke-width="1.4" opacity="1" />
+            <line x1="200.0" y1="70.0" x2="280.0" y2="108.0" stroke-width="1.4" opacity="1" />
+            <line x1="120.0" y1="108.0" x2="40.0" y2="270.0" stroke-width="0.9" opacity="0.75" />
+            <line x1="120.0" y1="108.0" x2="76.0" y2="270.0" stroke-width="0.9" opacity="0.75" />
+            <line x1="120.0" y1="108.0" x2="112.0" y2="270.0" stroke-width="0.9" opacity="0.75" />
+            <line x1="120.0" y1="108.0" x2="148.0" y2="270.0" stroke-width="0.9" opacity="0.75" />
+            <line x1="120.0" y1="108.0" x2="184.0" y2="270.0" stroke-width="0.9" opacity="0.75" />
+            <line x1="280.0" y1="108.0" x2="216.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="239.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="262.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="285.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="308.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="331.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="354.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <line x1="280.0" y1="108.0" x2="378.0" y2="270.0" stroke-width="0.9" opacity="0.6" />
+            <circle cx="200" cy="70" r="3" fill="currentColor" />
+            <circle cx="120" cy="108" r="2.6" fill="currentColor" />
+            <circle cx="280" cy="108" r="2.6" fill="currentColor" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="beginning__content">
+        <h2 class="beginning__heading reveal">The Beginning</h2>
+        <p class="beginning__text">From a single royal line came two brothers: Dhritarashtra, born without sight, and Pandu, marked young by a curse.</p>
+        <p class="beginning__text">Pandu's five sons — the Pandavas — grew up beside Dhritarashtra's hundred — the Kauravas. Cousins by blood. Rivals by birthright.</p>
+      </div>
+    </section>
+
+        <!-- ---------- CHAPTER 3: THE GREAT CHARACTERS ---------- -->
+    <section class="chapter chapter-characters" data-scroll-section aria-label="The Great Characters">
+      <div class="characters-header">
+        <span class="characters-eyebrow reveal">॥ यतो धर्मस्ततो जयः ॥</span>
+        <h2 class="characters__heading reveal">Those Who Shaped the War</h2>
+        <p class="characters__subheading reveal">Explore the champions, sovereigns, and divine architects of Kurukshetra.</p>
+
+        <div class="characters-filter-rail" role="tablist" aria-label="Filter characters by faction">
+          <button class="filter-chip filter-chip--active cursor-hover" type="button" data-filter="all">All Champions (12)</button>
+          <button class="filter-chip cursor-hover" type="button" data-filter="pandava">The Pandavas</button>
+          <button class="filter-chip cursor-hover" type="button" data-filter="kaurava">The Kauravas</button>
+          <button class="filter-chip cursor-hover" type="button" data-filter="elder">Elders &amp; Preceptors</button>
+          <button class="filter-chip cursor-hover" type="button" data-filter="divine">The Divine</button>
+        </div>
+      </div>
+
+      <div class="characters-carousel">
+        <button class="carousel-btn carousel-btn--prev cursor-hover" type="button" aria-label="Previous character">‹</button>
+
+        <div class="characters-viewport cursor-hover" data-cursor-text="Drag">
+          <ul class="characters-track">
+            <!-- 01. SRI KRISHNA -->
+            <li class="character-card" data-character="krishna" data-faction="divine">
+              <div class="character-card__visual">
+                <img src="assets/img/krishna_sudarshana.jpg" alt="Sri Krishna" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--divine">Divine • योगेश्वर</span>
+                <span class="character-card__index">01</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Sri Krishna</h3>
+                  <span class="character-card__epithet">The Divine Charioteer • Yogeshwara</span>
+                </div>
+                <p class="character-card__prose">The supreme cosmic consciousness who entered the mortal war without weapon in hand, guiding Arjuna across the abyss of despair to uphold cosmic Dharma.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Eighth avatar of Lord Vishnu, born to Devaki & Vasudeva in Mathura, raised in Vrindavan by Yashoda, sovereign ruler of the ocean citadel Dwaraka.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The cosmic Sudarshana Chakra, Kaumodaki mace, Panchajanya conch, and all-pervading omniscient cosmic sight (Vishwaroopa).</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Spoke the 700 verses of the Bhagavad Gita on Day 1; steered Arjuna's chariot; shielded the Pandavas through every catastrophic turning point.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 02. ARJUNA -->
+            <li class="character-card" data-character="arjuna" data-faction="pandava">
+              <div class="character-card__visual">
+                <img src="assets/img/arjuna_portrait.jpg" alt="Arjuna" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--pandava">Pandava • महारथी</span>
+                <span class="character-card__index">02</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Arjuna</h3>
+                  <span class="character-card__epithet">The Incomparable Archer • Savyasachi</span>
+                </div>
+                <p class="character-card__prose">Foremost disciple of Drona and master of the Gandiva bow. When kinship paralyzed his resolve at Kurukshetra, Krishna's immortal revelation restored his purpose.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Third Pandava, begotten by Queen Kunti from Indra (King of Devas); raised in Hastinapur; blessed by Lord Shiva with the celestial Pashupatastra.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The celestial Gandiva bow, inexhaustible quivers of Agni, the white-horse chariot, and mastery of all four classes of divine astras.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Brought down the invincible Bhishma on Day 10 behind Shikhandi, avenged Abhimanyu by slaying Jayadratha, and eliminated Karna on Day 17.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 03. KARNA -->
+            <li class="character-card" data-character="karna" data-faction="kaurava">
+              <div class="character-card__visual">
+                <img src="assets/img/karna_portrait.jpg" alt="Karna" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--kaurava">Kaurava Ally • दानवीर</span>
+                <span class="character-card__index">03</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Karna</h3>
+                  <span class="character-card__epithet">The Tragic Sun-Son • Radheya</span>
+                </div>
+                <p class="character-card__prose">Born of the Sun God but raised in the dust of charioteers. Bound by undying gratitude to Duryodhana, he chose tragic honor over an easy throne.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Firstborn son of Kunti and Surya (Sun God); set adrift in a basket, raised by charioteer Adhiratha; crowned King of Anga by Duryodhana.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The sacred Vijaya bow of Parashurama, natural divine armor (Kavacha-Kundala), and the one-time infallible Vasavi Shakti dart.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Supreme Kaurava Commander on Days 16–17; spared four Pandava brothers honoring his vow to Kunti; felled by Arjuna as his chariot wheel sank into earth.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 04. BHISHMA -->
+            <li class="character-card" data-character="bhishma" data-faction="elder">
+              <div class="character-card__visual">
+                <img src="assets/img/bhishma_portrait.jpg" alt="Bhishma" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--elder">Patriarch • पितामह</span>
+                <span class="character-card__index">04</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Bhishma</h3>
+                  <span class="character-card__epithet">The Grand Patriarch • Gangaputra</span>
+                </div>
+                <p class="character-card__prose">The unyielding pillar of Hastinapur who renounced his crown and took a terrifying vow of lifelong celibacy to honor his father's happiness.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Son of King Shantanu and River Goddess Ganga; original name Devavrata; blessed with Iccha-Mrityu (death only by his own chosen will).</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Mastery of all celestial astras, unmatched archery prowess, and deep wisdom in statecraft, ethics, and Rajadharma.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Supreme Kaurava Commander for Days 1–10; devastated Pandava legions until pinned upon a bed of arrows by Arjuna, waiting until the northern solstice to depart.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 05. DRAUPADI -->
+            <li class="character-card" data-character="draupadi" data-faction="pandava">
+              <div class="character-card__visual">
+                <img src="assets/img/draupadi_portrait.jpg" alt="Draupadi" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--pandava">Pandava Queen • याज्ञसेनी</span>
+                <span class="character-card__index">05</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Draupadi</h3>
+                  <span class="character-card__epithet">The Fire-Born Empress • Panchali</span>
+                </div>
+                <p class="character-card__prose">Emerged from the roaring flames of a sacred sacrificial altar. Her humiliation in the royal assembly became the moral catalyst that tore an empire apart.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Born fully formed from the Putrakameshti Yajna of King Drupada of Panchala; sister of Dhrishtadyumna; empress to the five Pandavas.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Inflexible moral conviction, divine spiritual protection directly granted by Krishna, and the fiery tears of unyielding justice.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Refused to tie her unbound hair for 13 years until washed in Dushasana's blood; her sacred vow was the relentless spiritual engine of the war.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 06. DURYODHANA -->
+            <li class="character-card" data-character="duryodhana" data-faction="kaurava">
+              <div class="character-card__visual">
+                <img src="assets/img/duryodhana_portrait.jpg" alt="Duryodhana" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--kaurava">Kaurava Leader • अधिपति</span>
+                <span class="character-card__index">06</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Duryodhana</h3>
+                  <span class="character-card__epithet">The Unyielding Sovereign • Suyodhana</span>
+                </div>
+                <p class="character-card__prose">Crown prince of Hastinapur whose absolute conviction of royal birthright and refusal to share five villages summoned eighteen akshauhinis to war.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Firstborn of the hundred Kauravas, son of blind King Dhritarashtra and Queen Gandhari; avatar of Kali.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The crushing iron mace (Gada), student of Lord Balarama, and an invulnerable adamantine torso hardened by Gandhari's glance.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Commanded the Kaurava coalition; fought through all 18 days until his final epic mace duel against Bhima at Lake Dvaipayana.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 07. YUDHISHTHIRA -->
+            <li class="character-card" data-character="yudhishthira" data-faction="pandava">
+              <div class="character-card__visual">
+                <img src="assets/img/yudhishthira_portrait.jpg" alt="Yudhishthira" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--pandava">Pandava King • धर्मराज</span>
+                <span class="character-card__index">07</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Yudhishthira</h3>
+                  <span class="character-card__epithet">The Embodiment of Dharma • Dharmaraja</span>
+                </div>
+                <p class="character-card__prose">The eldest Pandava whose commitment to truth was tested by devastating dice, forest exile, and the tragic calculus of total war.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Eldest Pandava, born to Queen Kunti from Yama / Dharma (God of Justice & Truth); rightful sovereign of Indraprastha.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Mastery of the celestial spear, unwavering moral fortitude, and supreme understanding of statecraft and spiritual duty.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Supreme commander of the Pandava coalition; spoke the pivotal elephant stratagem to disarm Drona; slew King Shalya; crowned Emperor.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 08. BHIMA -->
+            <li class="character-card" data-character="bhima" data-faction="pandava">
+              <div class="character-card__visual">
+                <img src="assets/img/bhima_portrait.jpg" alt="Bhima" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--pandava">Pandava • वृकोदर</span>
+                <span class="character-card__index">08</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Bhima</h3>
+                  <span class="character-card__epithet">The Colossus of Strength • Vrikodara</span>
+                </div>
+                <p class="character-card__prose">A mountain of flesh and fury blessed with the strength of 10,000 elephants, living only to defend his family and avenge the dishonor of Draupadi.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Second Pandava, born to Queen Kunti from Vayu (the Wind God); gifted supernatural physical power in the serpent realm Nagaloka.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The colossal iron mace, devastating bare-handed wrestling, and irresistible physical momentum that shattered elephant legions.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Fulfilled every oath taken in the dice hall: personally slew all 100 Kaurava brothers, tore open Dushasana, and shattered Duryodhana's thighs.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 09. ABHIMANYU -->
+            <li class="character-card" data-character="abhimanyu" data-faction="pandava">
+              <div class="character-card__visual">
+                <img src="assets/img/abhimanyu_stand.jpg" alt="Abhimanyu" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--pandava">Prodigy • वीर अभिमन्यु</span>
+                <span class="character-card__index">09</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Abhimanyu</h3>
+                  <span class="character-card__epithet">Hero of the Labyrinth • Veera Abhimanyu</span>
+                </div>
+                <p class="character-card__prose">Sixteen-year-old warrior prodigy who breached the impenetrable Chakravyuha alone, fighting six Maharathis simultaneously with a broken chariot wheel.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Son of Arjuna and Subhadra (Krishna's sister); reincarnation of Varchas; learned the entrance to the Chakravyuha in his mother's womb.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Bowmanship rivaling his father, lightning chariot maneuvers, celestial astras, and the legendary broken chariot wheel.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Breached the 7-tier formation on Day 13; defeated Duryodhana's son Lakshmana; martyred in an unjust encirclement; his son Parikshit saved the dynasty.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 10. DRONACHARYA -->
+            <li class="character-card" data-character="drona" data-faction="elder">
+              <div class="character-card__visual">
+                <img src="assets/img/drona_portrait.jpg" alt="Dronacharya" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--elder">Royal Preceptor • द्रोणाचार्य</span>
+                <span class="character-card__index">10</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Dronacharya</h3>
+                  <span class="character-card__epithet">The Royal Preceptor • Master of Astras</span>
+                </div>
+                <p class="character-card__prose">The revered martial master of both dynasties, caught between lifelong obligation to Hastinapur's throne and affection for his Pandava students.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Born miraculously from a clay vessel (Drona) through Sage Bharadwaja; educated by Sage Agnivesha; royal preceptor to the Kuru princes.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Master of all known divine astras including the Brahmashira, and the greatest battlefield architect of geometric formations.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Kaurava Commander on Days 11–15; designed the impenetrable Chakravyuha; laid down his celestial arms upon hearing of his son's fall.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 11. ASHWATTHAMA -->
+            <li class="character-card" data-character="ashwatthama" data-faction="kaurava">
+              <div class="character-card__visual">
+                <img src="assets/img/ashwatthama_portrait.jpg" alt="Ashwatthama" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--kaurava">Chiranjivi • अश्वत्थामा</span>
+                <span class="character-card__index">11</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Ashwatthama</h3>
+                  <span class="character-card__epithet">The Immortal Avenger • Chiranjivi</span>
+                </div>
+                <p class="character-card__prose">Born with a divine gem in his forehead and the wrath of Rudra in his veins, he became the instrument of the war's darkest vengeance.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>Son of Guru Drona and Kripi; partial avatar of Lord Rudra (Shiva); born with a protective gem embedded in his brow.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>The apocalyptic Brahmashira and Narayana astras; immortal resilience granted by Lord Shiva.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Final Kaurava commander; executed the devastating midnight strike on the sleeping Pandava camp on the 18th night; cursed by Krishna to wander earth for 3,000 years.</p>
+                  </div>
+                </div>
+              </div>
+            </li>\n\n            <!-- 12. SHAKUNI -->
+            <li class="character-card" data-character="shakuni" data-faction="kaurava">
+              <div class="character-card__visual">
+                <img src="assets/img/shakuni_portrait.jpg" alt="Shakuni" draggable="false" loading="lazy" />
+                <div class="character-card__visual-vignette"></div>
+                <span class="character-card__badge badge--kaurava">Gandhara King • सौबल</span>
+                <span class="character-card__index">12</span>
+              </div>
+              <div class="character-card__body">
+                <div class="character-card__identity">
+                  <h3 class="character-card__name">Shakuni</h3>
+                  <span class="character-card__epithet">The Mastermind of Gandhara • Saubala</span>
+                </div>
+                <p class="character-card__prose">The limping prince of Gandhara who turned a pair of ivory dice into weapons more devastating than any celestial astra to destroy the Kuru house.</p>
+                <div class="character-card__tabs" role="tablist">
+                  <button type="button" class="lore-tab lore-tab--active" data-tab="origin">Lineage</button>
+                  <button type="button" class="lore-tab" data-tab="astras">Arms &amp; Astras</button>
+                  <button type="button" class="lore-tab" data-tab="role">War Turning Point</button>
+                </div>
+                <div class="character-card__lore-content">
+                  <div class="lore-panel lore-panel--active" data-panel="origin">
+                    <span class="lore-panel__tag">Sacred Lineage</span>
+                    <p>King of Gandhara, brother of Queen Gandhari, and maternal uncle to Duryodhana and the Kauravas.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="astras">
+                    <span class="lore-panel__tag">Divine Arsenal</span>
+                    <p>Enchanted loaded dice carved from his father's bones, psychological manipulation, and master political deception.</p>
+                  </div>
+                  <div class="lore-panel" data-panel="role">
+                    <span class="lore-panel__tag">Kurukshetra Turning Point</span>
+                    <p>Architect of the rigged dice hall humiliation and 13-year forest exile; masterminded the anti-Pandava conspiracies; slain by Sahadeva on Day 18.</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button class="carousel-btn carousel-btn--next cursor-hover" type="button" aria-label="Next character">›</button>
+      </div>
+
+      <div class="carousel-nav-bottom">
+        <div class="carousel-dots" role="tablist" aria-label="Select character"></div>
+        <div class="carousel-counter"><span class="counter-curr">01</span> / <span class="counter-total">12</span></div>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 4: THE DICE GAME & DISHONOR ---------- -->
+    <section class="chapter chapter-dice" data-scroll-section aria-label="The Dice Game and Dishonor">
+      <div class="dice__vignette" aria-hidden="true"></div>
+      <div class="dice__content">
+        <h2 class="dice__heading reveal">The Dice Game</h2>
+        <div class="dice__panel reveal">
+          <p>Invited to a game he could not refuse, Yudhishthira wagers his brothers, his wealth, and finally himself — and loses everything, throw after throw.</p>
+        </div>
+        <div class="dice__panel reveal">
+          <p>Dragged before the court, Draupadi is offered no protection by law or kin. What happens in that hall will not be forgotten — not by her, not by the Pandavas, not by the throne itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 5: EXILE AND TRIALS ---------- -->
+    <section class="chapter chapter-exile" data-scroll-section aria-label="Exile and Trials">
+      <div class="exile__content">
+        <h2 class="exile__heading reveal">Exile</h2>
+        <div class="exile__path-wrap">
+          <svg viewBox="0 0 600 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path class="exile__path" d="M0,30 C60,0 120,60 180,30 C240,0 300,60 360,30 C420,0 480,60 540,30 C580,10 600,30 600,30" />
+          </svg>
+        </div>
+        <p class="exile__text">For thirteen years, the Pandavas live as strangers to their own kingdom — first in the forest, then in disguise, waiting.</p>
+        <p class="exile__text">Draupadi's vow does not fade with the seasons. Neither does Duryodhana's refusal to share even five villages.</p>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 6: THE ROAD TO WAR ---------- -->
+    <section class="chapter chapter-road" data-scroll-section aria-label="The Road to War">
+      <div class="road__armies" aria-hidden="true">
+        <div class="road__army road__army--pandava"></div>
+        <div class="road__army road__army--kaurava"></div>
+      </div>
+      <div class="road__content">
+        <h2 class="road__heading reveal">The Road to War</h2>
+        <p class="road__text">Krishna carries one last offer of peace to Hastinapura. Duryodhana will not yield — not even a needlepoint of land.</p>
+        <p class="road__text">Both sides muster their armies. What began as a family's quarrel now belongs to a battlefield.</p>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 7: KURUKSHETRA ---------- -->
+    <section class="chapter chapter-kurukshetra" data-scroll-section aria-label="Kurukshetra, the Great War">
+      <canvas class="kurukshetra__embers" aria-hidden="true"></canvas>
+      <div class="kurukshetra__flash" aria-hidden="true"></div>
+      <div class="kurukshetra__pin">
+        <h2 class="kurukshetra__heading reveal">Kurukshetra</h2>
+        <div class="kurukshetra__fragments">
+          <p class="war-fragment">Eighteen days.</p>
+          <p class="war-fragment">Teachers against students.</p>
+          <p class="war-fragment">Brothers against brothers.</p>
+          <p class="war-fragment">The Kuru field remembers every name.</p>
+          <p class="war-fragment">Dharma itself goes to war.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- GAME CALL TO ACTION ---------- -->
+    <section class="chapter chapter-game-invite" data-scroll-section aria-label="Play the Kurukshetra games">
+      <div class="game-invite__content">
+        <p class="game-invite__eyebrow">The field is yours to command</p>
+        <h2 class="game-invite__heading">Take Your Place in Kurukshetra</h2>
+        <p class="game-invite__copy">Enter the legendary war: break through the rotating concentric death-labyrinth as Abhimanyu in the real-time action roguelite, or command the Pandava champions on the tactical board.</p>
+        <div class="game-invite__actions" style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+          <a class="game-invite__link game-invite__link--chakravyuha" href="chakravyuha.html" style="background: linear-gradient(135deg, rgba(209,72,31,0.28), rgba(201,165,92,0.2)); border-color: var(--gold-bright); box-shadow: 0 0 24px rgba(209,72,31,0.25);">
+            ⚡ Enter Chakravyuha (Action Game) <span aria-hidden="true">→</span>
+          </a>
+          <a class="game-invite__link" href="game.html">
+            ♟️ Command the Field (Strategy) <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 8: THE BHAGAVAD GITA MOMENT ---------- -->
+    <section class="chapter chapter-gita" data-scroll-section aria-label="The Bhagavad Gita">
+      <svg class="gita__chakra" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Sudarshana Chakra returns, small and still">
+        <g>
+          <circle class="chakra-rim" cx="100" cy="100" r="88" fill="none" stroke-width="2.5" />
+          <circle class="chakra-rim" cx="100" cy="100" r="78" fill="none" stroke-width="0.75" opacity="0.5" />
+          <line class="chakra-spoke" x1="118.00" y1="100.00" x2="188.00" y2="100.00" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="116.63" y1="106.89" x2="181.30" y2="133.68" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="112.73" y1="112.73" x2="162.23" y2="162.23" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="106.89" y1="116.63" x2="133.68" y2="181.30" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="100.00" y1="118.00" x2="100.00" y2="188.00" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="93.11" y1="116.63" x2="66.32" y2="181.30" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="87.27" y1="112.73" x2="37.77" y2="162.23" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="83.37" y1="106.89" x2="18.70" y2="133.68" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="82.00" y1="100.00" x2="12.00" y2="100.00" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="83.37" y1="93.11" x2="18.70" y2="66.32" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="87.27" y1="87.27" x2="37.77" y2="37.77" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="93.11" y1="83.37" x2="66.32" y2="18.70" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="100.00" y1="82.00" x2="100.00" y2="12.00" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="106.89" y1="83.37" x2="133.68" y2="18.70" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="112.73" y1="87.27" x2="162.23" y2="37.77" stroke-width="1.4" />
+          <line class="chakra-spoke" x1="116.63" y1="93.11" x2="181.30" y2="66.32" stroke-width="1.4" />
+          <circle class="chakra-tip" cx="188.00" cy="100.00" r="3.2" />
+          <circle class="chakra-tip" cx="181.30" cy="133.68" r="3.2" />
+          <circle class="chakra-tip" cx="162.23" cy="162.23" r="3.2" />
+          <circle class="chakra-tip" cx="133.68" cy="181.30" r="3.2" />
+          <circle class="chakra-tip" cx="100.00" cy="188.00" r="3.2" />
+          <circle class="chakra-tip" cx="66.32" cy="181.30" r="3.2" />
+          <circle class="chakra-tip" cx="37.77" cy="162.23" r="3.2" />
+          <circle class="chakra-tip" cx="18.70" cy="133.68" r="3.2" />
+          <circle class="chakra-tip" cx="12.00" cy="100.00" r="3.2" />
+          <circle class="chakra-tip" cx="18.70" cy="66.32" r="3.2" />
+          <circle class="chakra-tip" cx="37.77" cy="37.77" r="3.2" />
+          <circle class="chakra-tip" cx="66.32" cy="18.70" r="3.2" />
+          <circle class="chakra-tip" cx="100.00" cy="12.00" r="3.2" />
+          <circle class="chakra-tip" cx="133.68" cy="18.70" r="3.2" />
+          <circle class="chakra-tip" cx="162.23" cy="37.77" r="3.2" />
+          <circle class="chakra-tip" cx="181.30" cy="66.32" r="3.2" />
+          <circle class="chakra-hub" cx="100" cy="100" r="18" />
+          <circle class="chakra-rim" cx="100" cy="100" r="24" fill="none" stroke-width="0.75" opacity="0.6" />
+        </g>
+      </svg>
+      <p class="gita__framing">Before the first arrow flies, Arjuna's bow falls from his hands.</p>
+      <div class="gita__verses">
+        <p class="gita__verse">Do what is right, Arjuna — not for what it will win you, but because it is right.</p>
+        <p class="gita__verse">The body dies. What is eternal in you does not.</p>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 9: AFTERMATH & WISDOM ---------- -->
+    <section class="chapter chapter-aftermath" data-scroll-section aria-label="Aftermath and Wisdom">
+      <canvas class="aftermath__motes" aria-hidden="true"></canvas>
+      <div class="aftermath__content">
+        <h2 class="aftermath__heading reveal">Aftermath</h2>
+        <p class="aftermath__text reveal">The war ends. Few are left to claim victory.</p>
+        <p class="aftermath__text reveal">What remains is not triumph, but the weight of what was lost — and the freedom, finally, to choose peace.</p>
+      </div>
+    </section>
+
+    <!-- ---------- CHAPTER 10: CLOSING REFLECTION ---------- -->
+    <section class="chapter chapter-closing" data-scroll-section aria-label="Closing Reflection">
+      <div class="closing__glow" aria-hidden="true"></div>
+      <div class="closing__content">
+        <svg class="closing__chakra" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Sudarshana Chakra, completing a final turn">
+          <g>
+            <circle class="chakra-rim" cx="100" cy="100" r="88" fill="none" stroke-width="2.5" />
+            <circle class="chakra-rim" cx="100" cy="100" r="78" fill="none" stroke-width="0.75" opacity="0.5" />
+            <line class="chakra-spoke" x1="118.00" y1="100.00" x2="188.00" y2="100.00" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="116.63" y1="106.89" x2="181.30" y2="133.68" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="112.73" y1="112.73" x2="162.23" y2="162.23" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="106.89" y1="116.63" x2="133.68" y2="181.30" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="100.00" y1="118.00" x2="100.00" y2="188.00" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="93.11" y1="116.63" x2="66.32" y2="181.30" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="87.27" y1="112.73" x2="37.77" y2="162.23" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="83.37" y1="106.89" x2="18.70" y2="133.68" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="82.00" y1="100.00" x2="12.00" y2="100.00" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="83.37" y1="93.11" x2="18.70" y2="66.32" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="87.27" y1="87.27" x2="37.77" y2="37.77" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="93.11" y1="83.37" x2="66.32" y2="18.70" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="100.00" y1="82.00" x2="100.00" y2="12.00" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="106.89" y1="83.37" x2="133.68" y2="18.70" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="112.73" y1="87.27" x2="162.23" y2="37.77" stroke-width="1.4" />
+            <line class="chakra-spoke" x1="116.63" y1="93.11" x2="181.30" y2="66.32" stroke-width="1.4" />
+            <circle class="chakra-tip" cx="188.00" cy="100.00" r="3.2" />
+            <circle class="chakra-tip" cx="181.30" cy="133.68" r="3.2" />
+            <circle class="chakra-tip" cx="162.23" cy="162.23" r="3.2" />
+            <circle class="chakra-tip" cx="133.68" cy="181.30" r="3.2" />
+            <circle class="chakra-tip" cx="100.00" cy="188.00" r="3.2" />
+            <circle class="chakra-tip" cx="66.32" cy="181.30" r="3.2" />
+            <circle class="chakra-tip" cx="37.77" cy="162.23" r="3.2" />
+            <circle class="chakra-tip" cx="18.70" cy="133.68" r="3.2" />
+            <circle class="chakra-tip" cx="12.00" cy="100.00" r="3.2" />
+            <circle class="chakra-tip" cx="18.70" cy="66.32" r="3.2" />
+            <circle class="chakra-tip" cx="37.77" cy="37.77" r="3.2" />
+            <circle class="chakra-tip" cx="66.32" cy="18.70" r="3.2" />
+            <circle class="chakra-tip" cx="100.00" cy="12.00" r="3.2" />
+            <circle class="chakra-tip" cx="133.68" cy="18.70" r="3.2" />
+            <circle class="chakra-tip" cx="162.23" cy="37.77" r="3.2" />
+            <circle class="chakra-tip" cx="181.30" cy="66.32" r="3.2" />
+            <circle class="chakra-hub" cx="100" cy="100" r="18" />
+            <circle class="chakra-rim" cx="100" cy="100" r="24" fill="none" stroke-width="0.75" opacity="0.6" />
+          </g>
+        </svg>
+        <p class="closing__message reveal">The story ends where every story ends — with a choice still left to make.</p>
+        <p class="closing__credit">Mahabharat 2.0 — an interactive retelling, built with GSAP &amp; Locomotive Scroll.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== LIBRARIES (CDN) ===================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+  <!-- ===================== APP (ES module) ===================== -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* ===========================================================
+   ANIMATIONS
+   Keyframes referenced by chapter JS via GSAP, plus a couple
+   of pure-CSS ambient effects that don't need JS timing.
+   =========================================================== */
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.75; }
+}
+
+@keyframes scroll-cue-drift {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 2%); }
+  50% { transform: translate(2%, -2%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+.invocation__scroll-line {
+  animation: scroll-cue-drift 1.8s var(--ease-soft) infinite;
+}
+
+/* Generic reveal primitive other chapters (Split 2+) will reuse.
+   JS toggles .is-visible; the transition lives in CSS so chapter
+   scripts only need to add/remove one class. */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease-epic), transform 0.9s var(--ease-epic);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invocation__scroll-line {
+    animation: none;
+  }
+  .gita__verse--caret::after {
+    animation: none;
+  }
+  .grain-overlay {
+    animation: none;
+  }
+  .reveal {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+}

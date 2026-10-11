@@ -1,0 +1,1506 @@
+/* ===========================================================
+   BASE
+   =========================================================== */
+
+body {
+  background: var(--void);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  overflow-x: hidden;
+}
+
+body.is-loading {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.is-loading .invocation__krishna-bg,
+body.is-loading .invocation__divine-aura,
+body.is-loading .invocation__chakra-stage,
+body.is-loading .invocation__content {
+  opacity: 0 !important;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--parchment);
+}
+
+/* Locomotive Scroll required base rules */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+html.has-scroll-dragging {
+  user-select: none;
+}
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+[data-scroll-container] {
+  min-height: 100vh;
+}
+
+/* Generic full-bleed chapter section */
+.chapter {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--space-xl) var(--edge-pad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===========================================================
+   LOADER
+   =========================================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--void);
+}
+
+.loader__mark {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.85;
+  padding-left: 0.35em; /* optically re-center the tracked text */
+}
+
+/* ===========================================================
+   CUSTOM CURSOR
+   =========================================================== */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 998;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold-bright);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gold);
+  transition: width 0.25s var(--ease-soft), height 0.25s var(--ease-soft),
+    border-color 0.25s var(--ease-soft);
+}
+
+.cursor-ring--active {
+  width: 54px;
+  height: 54px;
+  border-color: var(--ember-bright);
+}
+
+/* Contextual label pill: the ring grows and gains a solid backing
+   so the text stays readable, and the small dot hides underneath
+   it (handled via opacity in cursor.js, not here). */
+.cursor-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-soft);
+  white-space: nowrap;
+}
+
+.cursor-ring--label {
+  width: 84px;
+  height: 84px;
+  background: rgba(7, 6, 10, 0.78);
+  border-color: var(--gold-bright);
+}
+.cursor-ring--label .cursor-label {
+  opacity: 1;
+}
+
+body.custom-cursor-active {
+  cursor: none;
+}
+body.custom-cursor-active a,
+body.custom-cursor-active button {
+  cursor: none;
+}
+body.custom-cursor-active .cursor-dot,
+body.custom-cursor-active .cursor-ring {
+  opacity: 1;
+}
+
+/* ===========================================================
+   CHAPTER 1 — INVOCATION
+   =========================================================== */
+
+/* ===========================================================
+   CHAPTER 1 — INVOCATION (LORD KRISHNA & ROTATING SUDARSHANA)
+   =========================================================== */
+
+.chapter-invocation {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-md);
+  overflow: hidden;
+  background: #030204;
+}
+
+/* Complete stage locking Krishna and 3D rotating Sudarshana Chakra together */
+.invocation__krishna-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.invocation__krishna-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.invocation__krishna-bg {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.96) contrast(1.08) saturate(1.08);
+  will-change: transform, opacity;
+}
+
+.chakra__glow-back {
+  animation: chakraGlowPulse 2.8s ease-in-out infinite alternate;
+}
+
+.invocation__divine-aura {
+  animation: divineAuraPulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes chakraGlowPulse {
+  0% { opacity: 0.72; }
+  100% { opacity: 1; }
+}
+
+@keyframes divineAuraPulse {
+  0% { opacity: 0.65; }
+  100% { opacity: 0.95; }
+}
+
+/* Ambient celestial brightness & radial vignette for cinematic contrast */
+.invocation__ambient-glow {
+  position: absolute;
+  top: 18%;
+  left: 63%;
+  width: min(70vw, 700px);
+  height: min(70vw, 700px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 230, 120, 0.25) 0%, rgba(56, 182, 255, 0.12) 40%, transparent 70%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.invocation__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, transparent 35%, rgba(3, 2, 4, 0.35) 65%, rgba(3, 2, 4, 0.95) 100%),
+              linear-gradient(to bottom, transparent 42%, rgba(3, 2, 4, 0.8) 78%, #030204 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.invocation__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  margin-bottom: 1.2rem;
+  padding: 0 var(--edge-pad);
+  width: 100%;
+  max-width: 960px;
+}
+
+.invocation__sacred-shloka {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1vw, 0.88rem);
+  letter-spacing: 0.28em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.65);
+  padding: 0.3rem 1.2rem;
+  background: rgba(14, 12, 18, 0.75);
+  border: 1px solid rgba(201, 165, 92, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  margin-bottom: 0.1rem;
+}
+
+.invocation__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.4vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--parchment);
+  max-width: 28ch;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(201, 165, 92, 0.35);
+}
+
+.split-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.invocation__subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  color: var(--parchment-dim);
+  max-width: 48ch;
+  line-height: 1.45;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+}
+
+.invocation__scroll-cue {
+  position: static;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--parchment-dim);
+  z-index: 3;
+}
+
+.invocation__scroll-cue span {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.invocation__scroll-line {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* ===========================================================
+   CHAPTER 2 — THE BEGINNING
+   =========================================================== */
+
+.chapter-beginning {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  overflow: hidden;
+}
+
+.beginning__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.beginning__layer--lines {
+  color: var(--gold);
+  opacity: 0.22;
+}
+.beginning__layer--lines svg {
+  width: min(60vw, 620px);
+}
+
+.beginning__layer--glow {
+  background: radial-gradient(circle, rgba(201, 165, 92, 0.16) 0%, rgba(7, 6, 10, 0) 65%);
+}
+
+.beginning__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.beginning__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--gold-bright);
+}
+
+.beginning__text {
+  font-size: var(--size-lead);
+  line-height: 1.7;
+  color: var(--parchment);
+}
+
+/* ===========================================================
+   CHAPTER 3 — THE GREAT CHARACTERS
+   =========================================================== */
+
+.chapter-characters {
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.characters-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-md);
+}
+
+.characters-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.characters__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--gold-bright);
+  margin: 0.15rem 0;
+}
+
+.characters__subheading {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--size-lead);
+  color: var(--parchment-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.characters-filter-rail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.filter-chip {
+  padding: 0.42rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 165, 92, 0.24);
+  background: rgba(14, 12, 18, 0.75);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-soft);
+  backdrop-filter: blur(8px);
+}
+
+.filter-chip:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  background: rgba(201, 165, 92, 0.12);
+}
+
+.filter-chip--active {
+  border-color: var(--gold-bright);
+  background: rgba(201, 165, 92, 0.22);
+  color: var(--gold-bright);
+  box-shadow: 0 0 16px rgba(201, 165, 92, 0.25);
+  font-weight: 600;
+}
+
+.characters-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 1180px;
+}
+
+.characters-viewport {
+  overflow: hidden;
+  flex: 1;
+  outline-offset: 6px;
+  perspective: 1200px;
+  padding: 0.5rem 0;
+}
+
+.characters-track {
+  display: flex;
+  gap: var(--space-md);
+  will-change: transform;
+}
+
+.character-card {
+  flex: 0 0 clamp(300px, 33vw, 370px);
+  background: linear-gradient(175deg, rgba(26, 22, 32, 0.96), rgba(10, 8, 14, 0.98));
+  border: 1px solid rgba(201, 165, 92, 0.22);
+  border-radius: 6px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-sm);
+  text-align: left;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft), opacity 0.35s ease;
+  user-select: none;
+}
+
+.character-card--active {
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 35px rgba(201, 165, 92, 0.28), 0 20px 55px rgba(0, 0, 0, 0.75);
+}
+
+.character-card--hidden {
+  display: none !important;
+}
+
+.character-card__visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 165, 92, 0.32);
+  background: #000;
+}
+
+.character-card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.6s var(--ease-soft);
+}
+
+.character-card:hover .character-card__visual img {
+  transform: scale(1.06);
+}
+
+.character-card__visual-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(10, 8, 14, 0.92) 100%);
+  pointer-events: none;
+}
+
+.character-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 9px;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.badge--divine {
+  background: rgba(30, 95, 185, 0.85);
+  color: #d8f0ff;
+  border-color: rgba(120, 200, 255, 0.5);
+}
+
+.badge--pandava {
+  background: rgba(22, 85, 50, 0.85);
+  color: #e2f8eb;
+  border-color: rgba(72, 199, 142, 0.45);
+}
+
+.badge--kaurava {
+  background: rgba(145, 32, 22, 0.85);
+  color: #ffe6e2;
+  border-color: rgba(230, 80, 60, 0.45);
+}
+
+.badge--elder {
+  background: rgba(165, 125, 25, 0.85);
+  color: #fff9e6;
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.character-card__index {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  opacity: 0.75;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.character-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.character-card__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid rgba(201, 165, 92, 0.16);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.character-card__name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  margin: 0;
+}
+
+.character-card__epithet {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+.character-card__prose {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--parchment);
+  margin: 0 0 10px;
+  min-height: 4.4em;
+}
+
+.character-card__tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(8, 7, 11, 0.65);
+  padding: 3px;
+  border-radius: 4px;
+  border: 1px solid rgba(201, 165, 92, 0.15);
+  margin-bottom: 8px;
+}
+
+.lore-tab {
+  flex: 1;
+  padding: 0.35rem 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.lore-tab:hover {
+  color: var(--gold-bright);
+}
+
+.lore-tab--active {
+  background: rgba(201, 165, 92, 0.22);
+  color: var(--gold-bright);
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.character-card__lore-content {
+  background: rgba(7, 6, 10, 0.5);
+  border: 1px solid rgba(201, 165, 92, 0.12);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  padding: 0.65rem 0.8rem;
+  min-height: 6.6em;
+}
+
+.lore-panel {
+  display: none;
+  opacity: 0;
+}
+
+.lore-panel--active {
+  display: block;
+  opacity: 1;
+  animation: panelFade 0.25s ease-out forwards;
+}
+
+@keyframes panelFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lore-panel__tag {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 0.25rem;
+  opacity: 0.85;
+}
+
+.lore-panel p {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--parchment);
+  margin: 0;
+}
+
+.carousel-btn {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s var(--ease-soft), transform 0.2s ease;
+}
+.carousel-btn:hover {
+  background: rgba(201, 165, 92, 0.18);
+  transform: scale(1.06);
+}
+
+.carousel-nav-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(236, 228, 211, 0.25);
+  transition: background 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
+}
+.carousel-dot--active {
+  background: var(--gold-bright);
+  transform: scale(1.3);
+}
+
+.carousel-counter {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--parchment-dim);
+}
+
+.counter-curr {
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+
+/* ===========================================================
+   CHAPTER 4 — THE DICE GAME & DISHONOR
+   =========================================================== */
+
+.chapter-dice {
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dice__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(156, 43, 31, 0.22) 0%, rgba(7, 6, 10, 0.85) 70%);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dice__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  max-width: var(--content-max);
+}
+
+.dice__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--ember-bright);
+  text-align: center;
+}
+
+.dice__panel {
+  border-left: 2px solid var(--ember);
+  padding-left: var(--space-md);
+  text-align: left;
+}
+
+.dice__panel p {
+  font-size: var(--size-lead);
+  line-height: 1.7;
+  color: var(--parchment);
+}
+
+/* ===========================================================
+   CHAPTER 5 — EXILE AND TRIALS
+   Muted, slower, desaturated relative to surrounding chapters.
+   =========================================================== */
+
+.chapter-exile {
+  flex-direction: column;
+  gap: var(--space-lg);
+  background: linear-gradient(180deg, var(--void) 0%, var(--indigo) 140%);
+  overflow: hidden;
+}
+
+.exile__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.exile__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--parchment-dim);
+  letter-spacing: 0.03em;
+}
+
+.exile__text {
+  font-size: var(--size-lead);
+  line-height: 1.75;
+  color: var(--parchment-dim);
+}
+
+.exile__path-wrap {
+  width: min(70vw, 640px);
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+.exile__path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+/* ===========================================================
+   CHAPTER 6 — THE ROAD TO WAR
+   =========================================================== */
+
+.chapter-road {
+  flex-direction: column;
+  gap: var(--space-lg);
+  overflow: hidden;
+}
+
+.road__armies {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.road__army {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 46%;
+}
+
+.road__army--pandava {
+  left: 0;
+  background: linear-gradient(100deg, rgba(201, 165, 92, 0.16), transparent 70%);
+  clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+}
+
+.road__army--kaurava {
+  right: 0;
+  background: linear-gradient(260deg, rgba(156, 43, 31, 0.22), transparent 70%);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.road__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.road__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--parchment);
+}
+
+.road__text {
+  font-size: var(--size-lead);
+  line-height: 1.7;
+  color: var(--parchment);
+}
+
+/* ===========================================================
+   CHAPTER 7 — KURUKSHETRA
+   =========================================================== */
+
+.chapter-kurukshetra {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(4rem, 8vh, 7rem) var(--edge-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--void);
+  overflow: hidden;
+}
+
+.kurukshetra__embers {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.kurukshetra__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--ember-bright);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kurukshetra__pin {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: 0;
+}
+
+.kurukshetra__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--ember-bright);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.kurukshetra__fragments {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.war-fragment {
+  position: relative;
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  color: var(--gold-bright);
+  text-align: center;
+  line-height: 1.45;
+  margin: 0;
+  will-change: opacity, transform;
+}
+
+/* ===========================================================
+   INTERACTIVE KURUKSHETRA STRATEGY GAME
+   =========================================================== */
+
+.chapter-arena {
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  background: radial-gradient(ellipse at 50% 38%, rgba(27, 35, 64, 0.38), var(--void) 72%);
+}
+
+.arena__intro {
+  max-width: 760px;
+  text-align: center;
+}
+
+.arena__eyebrow {
+  color: var(--ember-bright);
+  font: 500 0.72rem/1.4 var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.arena__heading {
+  margin: 0.45rem 0 0.7rem;
+  color: var(--gold-bright);
+  font: 500 var(--size-h2)/1.12 var(--font-display);
+}
+
+.arena__lede {
+  max-width: 66ch;
+  color: var(--parchment-dim);
+  font: 400 var(--size-body)/1.55 var(--font-body);
+}
+
+.arena {
+  width: min(100%, 760px);
+  padding: clamp(1rem, 3vw, 1.8rem);
+  border: 1px solid rgba(201, 165, 92, 0.28);
+  border-radius: 2px;
+  background: linear-gradient(145deg, rgba(24, 21, 28, 0.96), rgba(8, 7, 11, 0.96));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36), inset 0 0 50px rgba(201, 165, 92, 0.035);
+}
+
+.arena__topline,
+.arena__bottomline,
+.arena__sides {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.arena__score { display: grid; gap: 0.22rem; }
+.arena__round { color: var(--parchment-dim); font: 500 0.65rem/1.3 var(--font-display); letter-spacing: 0.16em; text-transform: uppercase; }
+.arena__turn { color: var(--gold-bright); font: 500 0.85rem/1.3 var(--font-display); }
+.arena__turn--enemy { color: #e78365; }
+
+.arena__restart,
+.arena__endturn {
+  min-height: 2.65rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(201, 165, 92, 0.55);
+  border-radius: 2px;
+  color: var(--gold-bright);
+  background: rgba(201, 165, 92, 0.08);
+  font: 500 0.66rem/1.2 var(--font-display);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.arena__restart:hover,
+.arena__endturn:hover:not(:disabled) { background: rgba(201, 165, 92, 0.18); border-color: var(--gold-bright); }
+.arena__endturn:disabled { opacity: 0.38; cursor: not-allowed; }
+
+.arena__sides { padding: 1rem 0 0.5rem; }
+.arena__side { font: 500 0.65rem/1.3 var(--font-display); letter-spacing: 0.13em; text-transform: uppercase; }
+.arena__side--pandava { color: #e6c984; }
+.arena__side--kaurava { color: #dc775c; }
+
+.arena__board {
+  display: grid;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid rgba(201, 165, 92, 0.24);
+  background: rgba(0, 0, 0, 0.55);
+  touch-action: manipulation;
+}
+
+.arena__row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px; }
+
+.arena__cell {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  aspect-ratio: 1.35;
+  place-items: center;
+  padding: 0.2rem;
+  border: 1px solid rgba(236, 228, 211, 0.055);
+  color: var(--parchment);
+  background: linear-gradient(145deg, rgba(40, 36, 39, 0.82), rgba(17, 15, 19, 0.95));
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.arena__cell:nth-child(odd) { background-color: rgba(201, 165, 92, 0.035); }
+.arena__cell:hover { border-color: rgba(240, 215, 153, 0.45); }
+.arena__cell:focus-visible,
+.arena__restart:focus-visible,
+.arena__endturn:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; z-index: 1; }
+.arena__cell--selected { border-color: var(--gold-bright); background: rgba(201, 165, 92, 0.19); box-shadow: inset 0 0 18px rgba(201, 165, 92, 0.2); }
+.arena__cell--move { border-color: rgba(160, 190, 153, 0.75); background: rgba(95, 133, 97, 0.2); }
+.arena__cell--attack { border-color: rgba(209, 72, 31, 0.9); background: rgba(156, 43, 31, 0.24); }
+.arena__cell:disabled { cursor: default; }
+.arena__legend { display: flex; justify-content: center; gap: 1.2rem; padding-top: 0.5rem; color: var(--parchment-dim); font: 400 0.85rem/1 var(--font-body); }
+.arena__legend span { display: inline-flex; align-items: center; gap: 0.38rem; }
+.arena__legend-mark { display: inline-block; width: 0.65rem; height: 0.65rem; border: 1px solid currentColor; }
+.arena__legend-mark--move { color: #a0be99; background: rgba(95, 133, 97, 0.3); }
+.arena__legend-mark--attack { color: var(--ember-bright); background: rgba(156, 43, 31, 0.35); }
+
+.arena__piece {
+  display: grid;
+  justify-items: center;
+  gap: 0.08rem;
+  line-height: 1;
+}
+
+.arena__piece-mark {
+  display: grid;
+  width: clamp(1.5rem, 5.3vw, 2.35rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font: 500 clamp(0.72rem, 2.3vw, 1rem)/1 var(--font-display);
+}
+
+.arena__piece--pandava .arena__piece-mark { color: #f0d799; background: radial-gradient(circle, rgba(201,165,92,0.28), rgba(201,165,92,0.04)); }
+.arena__piece--kaurava .arena__piece-mark { color: #e78365; background: radial-gradient(circle, rgba(156,43,31,0.35), rgba(156,43,31,0.05)); }
+.arena__piece-name { max-width: 100%; overflow: hidden; color: var(--parchment); font: 500 clamp(0.47rem, 1.2vw, 0.62rem)/1.1 var(--font-display); text-overflow: ellipsis; white-space: nowrap; }
+
+.arena__bottomline { min-height: 3.4rem; padding-top: 0.65rem; }
+.arena__instruction { color: var(--parchment-dim); font: 400 1rem/1.3 var(--font-body); }
+.arena__roster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem 1rem; padding: 0.7rem 0; border-top: 1px solid rgba(201, 165, 92, 0.15); border-bottom: 1px solid rgba(201, 165, 92, 0.15); }
+.arena__roster-side { display: grid; gap: 0.35rem; }
+.arena__roster-title { margin-bottom: 0.15rem; font: 500 0.58rem/1.2 var(--font-display); letter-spacing: 0.13em; text-transform: uppercase; }
+.arena__roster-title--pandava { color: #e6c984; }
+.arena__roster-title--kaurava { color: #dc775c; }
+.arena__health { display: flex; justify-content: space-between; gap: 0.45rem; color: var(--parchment-dim); font: 400 0.9rem/1.2 var(--font-body); }
+.arena__health--retreated { opacity: 0.38; text-decoration: line-through; }
+.arena__log { min-height: 1.5em; padding-top: 0.6rem; color: var(--gold-bright); font: italic 400 1rem/1.4 var(--font-body); }
+
+/* Story-page invitation and standalone rules/game page. */
+.chapter-game-invite {
+  min-height: 72vh;
+  flex-direction: column;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 45%, rgba(156, 43, 31, 0.19), var(--void) 68%);
+}
+
+.game-invite__content { max-width: 720px; }
+.game-invite__eyebrow { color: var(--ember-bright); font: 500 0.72rem/1.4 var(--font-display); letter-spacing: 0.18em; text-transform: uppercase; }
+.game-invite__heading { margin: 0.6rem 0; color: var(--gold-bright); font: 500 var(--size-h2)/1.14 var(--font-display); }
+.game-invite__copy { margin: 0 auto var(--space-md); color: var(--parchment-dim); font: 400 var(--size-lead)/1.5 var(--font-body); }
+.game-invite__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  background: rgba(201, 165, 92, 0.08);
+  font: 500 0.72rem/1.2 var(--font-display);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 180ms ease, background 180ms ease;
+}
+.game-invite__link:hover { color: var(--void); background: var(--gold-bright); }
+.game-invite__link:focus-visible,
+.game-page__back:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 4px; }
+
+.game-page { min-height: 100vh; }
+.game-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding: 0.8rem var(--edge-pad);
+  border-bottom: 1px solid rgba(201, 165, 92, 0.18);
+  background: rgba(7, 6, 10, 0.92);
+}
+.game-page__back,
+.game-page__brand { color: var(--gold-bright); font: 500 0.68rem/1.3 var(--font-display); letter-spacing: 0.07em; text-decoration: none; }
+.game-page__back { color: var(--parchment-dim); }
+.game-page__back:hover { color: var(--gold-bright); }
+.game-page__main { width: min(100%, 1100px); margin: 0 auto; padding: 0 var(--edge-pad); }
+.game-rules { padding: clamp(3rem, 8vw, 6rem) 0 var(--space-md); text-align: center; }
+.game-rules__lead { max-width: 68ch; margin: 0 auto var(--space-md); color: var(--parchment-dim); font: 400 var(--size-lead)/1.5 var(--font-body); }
+.game-rules__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.7rem; text-align: left; }
+.game-rules__card { min-height: 10.5rem; padding: 1.05rem; border: 1px solid rgba(201, 165, 92, 0.19); background: linear-gradient(145deg, rgba(24, 21, 28, 0.82), rgba(8, 7, 11, 0.82)); }
+.game-rules__number { color: var(--ember-bright); font: 500 0.62rem/1 var(--font-display); letter-spacing: 0.14em; }
+.game-rules__card h2 { margin: 0.55rem 0 0.35rem; color: var(--gold-bright); font: 500 0.88rem/1.3 var(--font-display); }
+.game-rules__card p { color: var(--parchment-dim); font: 400 1rem/1.35 var(--font-body); }
+.game-rules__goal { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; max-width: 760px; margin: var(--space-md) auto 0; padding: 1rem 1.2rem; border-left: 2px solid var(--ember-bright); background: rgba(156, 43, 31, 0.08); text-align: left; }
+.game-rules__goal > span { color: var(--gold-bright); font: 500 0.7rem/1.4 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; }
+.game-rules__goal p { color: var(--parchment-dim); font: 400 1rem/1.45 var(--font-body); }
+.game-rules__goal strong { color: var(--parchment); font-weight: 500; }
+.game-page__arena.chapter-arena { min-height: auto; padding: var(--space-lg) 0 var(--space-xl); }
+.game-page__arena .arena__intro { margin-bottom: var(--space-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  .arena__cell, .arena__restart, .arena__endturn { transition: none; }
+}
+
+/* ===========================================================
+   CHAPTER 8 — THE BHAGAVAD GITA MOMENT
+   =========================================================== */
+
+.chapter-gita {
+  flex-direction: column;
+  gap: var(--space-lg);
+  background: radial-gradient(circle at 50% 30%, rgba(156, 43, 31, 0.14) 0%, var(--void) 65%);
+}
+
+.gita__chakra {
+  width: clamp(90px, 12vw, 140px);
+  height: clamp(90px, 12vw, 140px);
+  color: var(--gold);
+}
+.gita__chakra .chakra-rim,
+.gita__chakra .chakra-spoke {
+  stroke: var(--gold);
+}
+.gita__chakra .chakra-hub {
+  fill: var(--gold-bright);
+}
+.gita__chakra .chakra-tip {
+  fill: var(--ember-bright);
+}
+
+.gita__framing {
+  font-style: italic;
+  font-size: var(--size-lead);
+  color: var(--parchment-dim);
+  text-align: center;
+  max-width: 46ch;
+}
+
+.gita__verses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.gita__verse {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--size-lead);
+  line-height: 1.7;
+  color: var(--parchment);
+  min-height: 1.7em;
+}
+
+.gita__verse--caret::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--gold-bright);
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  animation: caret-blink 0.9s step-end infinite;
+}
+
+/* ===========================================================
+   CHAPTER 9 — AFTERMATH & WISDOM
+   =========================================================== */
+
+.chapter-aftermath {
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--void) 0%, #120f18 100%);
+}
+
+.aftermath__motes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.aftermath__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.aftermath__heading {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: 500;
+  color: var(--gold-bright);
+}
+
+.aftermath__text {
+  font-size: var(--size-lead);
+  line-height: 1.75;
+  color: var(--parchment-dim);
+}
+
+/* Reflective pacing: reveals here hold a touch longer than the
+   sitewide default, reinforcing the chapter's slower mood. */
+.chapter-aftermath .reveal {
+  transition-duration: 1.6s;
+}
+
+/* ===========================================================
+   CHAPTER 10 — CLOSING REFLECTION
+   =========================================================== */
+
+.chapter-closing {
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.closing__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(60vw, 700px);
+  height: min(60vw, 700px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(201, 165, 92, 0.18) 0%, rgba(7, 6, 10, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.closing__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.closing__chakra {
+  width: clamp(100px, 14vw, 170px);
+  height: clamp(100px, 14vw, 170px);
+  color: var(--gold);
+}
+.closing__chakra .chakra-rim,
+.closing__chakra .chakra-spoke {
+  stroke: var(--gold);
+}
+.closing__chakra .chakra-hub {
+  fill: var(--gold-bright);
+}
+.closing__chakra .chakra-tip {
+  fill: var(--ember-bright);
+}
+
+.closing__message {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--size-lead);
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+.closing__credit {
+  font-size: 0.95rem;
+  color: var(--parchment-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ===========================================================
+   CHAPTER NAVIGATION
+   Fixed dot rail, one per chapter, built dynamically in
+   chapterNav.js. Hidden on touch/narrow screens in responsive.css.
+   =========================================================== */
+
+.chapter-nav {
+  position: fixed;
+  top: 50%;
+  right: var(--space-md);
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.chapter-nav__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(236, 228, 211, 0.28);
+  transition: background 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
+  flex-shrink: 0;
+}
+.chapter-nav__dot--active {
+  background: var(--gold-bright);
+  transform: scale(1.4);
+}
+
+.chapter-nav__tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.85rem);
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--parchment);
+  background: rgba(7, 6, 10, 0.85);
+  border: 1px solid rgba(201, 165, 92, 0.25);
+  padding: 0.3rem 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-soft);
+}
+.chapter-nav__dot:hover .chapter-nav__tooltip,
+.chapter-nav__dot:focus-visible .chapter-nav__tooltip {
+  opacity: 1;
+}
+
+/* ===========================================================
+   AMBIENT OVERLAYS
+   Three full-page effects, stacked deliberately: the cursor glow
+   adds light first, the color wash tints hue on top of that, and
+   the grain textures over everything — a simple compositing order
+   approximating a filmic look without any image assets.
+   =========================================================== */
+
+.cursor-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle 340px at var(--mx, 50%) var(--my, 50%),
+    rgba(240, 215, 153, 0.12),
+    transparent 70%
+  );
+}
+
+.color-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  mix-blend-mode: color;
+  opacity: 0.35;
+  background-color: var(--void);
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%27120%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27/%3E%3C/filter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27/%3E%3C/svg%3E");
+  animation: grain-shift 0.6s steps(4) infinite;
+}
+
+/* Focus visibility kept intact for accessibility */
+a:focus-visible,
+button:focus-visible,
+.characters-viewport:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}

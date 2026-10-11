@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090807" />
+  <meta name="description" content="Learn the rules and play Command the Field, a Pandavas versus Kauravas strategy game." />
+  <title>Command the Field — Mahabharat 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/svg/chakra.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="game-page">
+  <header class="game-page__header">
+    <a class="game-page__back" href="index.html">← Back to the story</a>
+    <a class="game-page__brand" href="chakravyuha.html" style="color: var(--gold-bright); text-decoration: none; border: 1px solid var(--gold); padding: 0.35rem 0.85rem; border-radius: 999px; font-size: 0.9rem; letter-spacing: 0.05em; transition: all 0.2s ease;">⚔️ Enter Chakravyuha (Action Game) →</a>
+  </header>
+
+  <main class="game-page__main">
+    <section class="game-rules" aria-labelledby="rules-title">
+      <p class="arena__eyebrow">Your guide to the battlefield</p>
+      <h1 class="arena__heading" id="rules-title">Rules of the Field</h1>
+      <p class="game-rules__lead">Lead the Pandavas. The computer leads the Kauravas. Use each champion's movement and strength wisely to make the opposing army retreat.</p>
+
+      <div class="game-rules__grid">
+        <article class="game-rules__card">
+          <span class="game-rules__number">01</span>
+          <h2>Choose a champion</h2>
+          <p>Select Yudhishthira, Bhima, or Arjuna to reveal their available moves and targets.</p>
+        </article>
+        <article class="game-rules__card">
+          <span class="game-rules__number">02</span>
+          <h2>Move, then strike</h2>
+          <p>Each champion may move one square and attack once per round. You can do both with the same champion in the same turn.</p>
+        </article>
+        <article class="game-rules__card">
+          <span class="game-rules__number">03</span>
+          <h2>Watch the colors</h2>
+          <p>Green squares are open moves. Red squares are rivals in range. Select a red square to attack; the battle log shows damage.</p>
+        </article>
+        <article class="game-rules__card">
+          <span class="game-rules__number">04</span>
+          <h2>Use their strengths</h2>
+          <p>Arjuna attacks up to two squares away (3 damage). Bhima deals 3 crushing damage. Yudhishthira deals 2. Champions strike in all 8 directions (including diagonals)!</p>
+        </article>
+      </div>
+
+      <div class="game-rules__goal">
+        <span>Victory</span>
+        <p>Make all three rival champions retreat. Choose <strong>Finish turn</strong> when you're ready for the computer's Kaurava commanders to act. <strong>New battle</strong> resets the field.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter-arena game-page__arena" data-arena aria-label="Playable Kurukshetra battlefield">
+      <div class="arena__intro">
+        <p class="arena__eyebrow">Interactive strategy · Play as the Pandavas</p>
+        <h2 class="arena__heading">Command the Field</h2>
+        <p class="arena__lede">Select a Pandava, move to a green square, then strike a red-highlighted rival. You can move and attack once each round.</p>
+      </div>
+
+      <div class="arena">
+        <div class="arena__topline">
+          <div class="arena__score" aria-label="Battle status">
+            <span class="arena__round" data-round>Round 1</span>
+            <span class="arena__turn" data-turn>Pandavas · Your turn</span>
+          </div>
+          <button class="arena__restart" type="button" data-restart>New battle</button>
+        </div>
+
+        <div class="arena__sides" aria-hidden="true">
+          <span class="arena__side arena__side--pandava">Pandavas</span>
+          <span class="arena__side arena__side--kaurava">Kauravas · Computer</span>
+        </div>
+        <div class="arena__board" data-board role="grid" aria-label="Kurukshetra battlefield. Select one of your champions, then choose a highlighted square to move and a highlighted rival to attack."></div>
+        <div class="arena__legend" aria-label="Board highlights">
+          <span><i class="arena__legend-mark arena__legend-mark--move" aria-hidden="true"></i>Move</span>
+          <span><i class="arena__legend-mark arena__legend-mark--attack" aria-hidden="true"></i>Attack in range</span>
+        </div>
+
+        <div class="arena__bottomline">
+          <p class="arena__instruction" data-instruction aria-live="polite">Select a Pandava to see available actions.</p>
+          <button class="arena__endturn" type="button" data-end-turn>Finish turn</button>
+        </div>
+        <div class="arena__roster" data-roster aria-label="Champion health"></div>
+        <p class="arena__log" data-log aria-live="polite">The armies await your command.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/gamePage.js"></script>
+</body>
+</html>

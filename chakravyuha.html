@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#07060a" />
+  <meta name="description" content="Chakravyuha: The Labyrinth of Kings — Fast-paced roguelite action game. Play as Abhimanyu and penetrate the 7 rotating death-rings." />
+  <title>Chakravyuha: The Labyrinth of Kings — Mahabharat 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/svg/chakra.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/chakravyuha.css" />
+</head>
+<body class="chakravyuha-page">
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <nav class="chakravyuha-nav">
+    <a class="nav-link" href="index.html">← Back to the Epic</a>
+    <div class="nav-controls">
+      <a class="nav-btn" href="game.html">♟️ Command the Field</a>
+      <button class="nav-btn" id="audio-toggle-btn" type="button">🔊 Audio</button>
+    </div>
+  </nav>
+
+  <!-- ================= GAME CANVAS ================= -->
+  <canvas id="chakravyuha-canvas"></canvas>
+
+  <!-- ================= IN-GAME HUD ================= -->
+  <div class="chakravyuha-hud" id="game-hud">
+    <!-- Topline: HP, Prana, Ring Status -->
+    <div class="hud-topline">
+      <div class="hud-bars">
+        <div class="hud-bar-group">
+          <div class="hud-bar-label hud-bar-label--hp">
+            <span>Abhimanyu Vitality</span>
+            <span id="hud-hp-text">100 / 100</span>
+          </div>
+          <div class="hud-bar-track">
+            <div class="hud-bar-fill hud-bar-fill--hp" id="hud-hp-bar"></div>
+          </div>
+        </div>
+
+        <div class="hud-bar-group">
+          <div class="hud-bar-label hud-bar-label--prana">
+            <span>Prana (Focus)</span>
+            <span id="hud-prana-text">100 / 100</span>
+          </div>
+          <div class="hud-bar-track">
+            <div class="hud-bar-fill hud-bar-fill--prana" id="hud-prana-bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-ring-center">
+        <p class="hud-ring-label" id="hud-ring-label">TIER 1 OF 7</p>
+        <h2 class="hud-ring-name" id="hud-ring-name">Padmavyuha Periphery</h2>
+      </div>
+    </div>
+
+    <!-- Bottom: Astra Action Tray -->
+    <div class="hud-astras">
+      <div class="astra-slot" id="astra-slot-agneya" title="Agneyastra (Key 1): Sacred Flame Wave">
+        <span class="astra-key">1</span>
+        <span class="astra-icon">🔥</span>
+        <span class="astra-cost">35 P</span>
+        <div class="astra-cd-overlay"></div>
+      </div>
+
+      <div class="astra-slot" id="astra-slot-varuna" title="Varunastra (Key 2): Tidal Knockback Wave">
+        <span class="astra-key">2</span>
+        <span class="astra-icon">🌊</span>
+        <span class="astra-cost">40 P</span>
+        <div class="astra-cd-overlay"></div>
+      </div>
+
+      <div class="astra-slot" id="astra-slot-vayu" title="Vayuastra (Key 3): Cyclone Vortex">
+        <span class="astra-key">3</span>
+        <span class="astra-icon">🌪️</span>
+        <span class="astra-cost">30 P</span>
+        <div class="astra-cd-overlay"></div>
+      </div>
+
+      <div class="astra-slot" id="astra-slot-wheel" title="Chariot Wheel Fury (Key 4 / Space): Invulnerable 360° Sweep">
+        <span class="astra-key">4 / SPC</span>
+        <span class="astra-icon">☸️</span>
+        <span class="astra-cost">60 P</span>
+        <div class="astra-cd-overlay"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MOBILE VIRTUAL CONTROLS ================= -->
+  <div class="mobile-controls">
+    <div class="touch-stick" id="touch-stick">
+      <div class="touch-stick-nub"></div>
+    </div>
+    <div class="touch-actions">
+      <button class="touch-btn" id="touch-dash" type="button" title="Dodge">💨</button>
+      <button class="touch-btn" id="touch-fire" type="button" title="Fire Bow">🏹</button>
+      <button class="touch-btn" id="touch-wheel" type="button" title="Wheel Smash">☸️</button>
+    </div>
+  </div>
+
+  <!-- ================= INTRO MODAL ================= -->
+  <div class="modal-overlay is-active" id="game-intro-modal">
+    <div class="modal-card">
+      <p class="modal-eyebrow">Kurukshetra · Day 13 · The Rotating Fortress</p>
+      <h1 class="modal-title">Chakravyuha: Labyrinth of Kings</h1>
+      <p class="modal-lead">
+        Guru Drona has formed the impenetrable Chakravyuha. Only four know how to breach it, but only you stand on the field today: <strong>Abhimanyu</strong>, son of Arjuna.
+      </p>
+      <div style="margin: 0.8rem 0 1.2rem; border-radius: 6px; overflow: hidden; border: 1px solid var(--gold); box-shadow: 0 0 20px rgba(201, 165, 92, 0.25);">
+        <img src="assets/img/chakravyuha_formation.jpg" alt="The 7 concentric rotating tiers of the Chakravyuha military formation" style="width: 100%; height: auto; display: block; max-height: 220px; object-fit: cover;" />
+      </div>
+      <p style="color: var(--parchment-dim); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem;">
+        You learned the secret of entering while in your mother’s womb—now you must pierce all seven spinning concentric circles of foot-soldiers, war elephants, scythed chariots, and the six Maharathis.
+      </p>
+
+      <!-- Interactive 60fps Gameplay Demo Player (100% Browser Compatible) -->
+      <div class="demo-video-wrapper">
+        <div class="demo-video-header">
+          <span>🎬 Interactive Gameplay Demo (Watch How to Play)</span>
+          <span id="demo-time-label" style="font-size: 0.72rem; color: var(--gold-bright);">00:00.0 / 00:12.0</span>
+        </div>
+
+        <div class="demo-canvas-container">
+          <canvas id="demo-player-canvas" width="680" height="340"></canvas>
+        </div>
+
+        <div class="demo-controls-bar">
+          <button type="button" id="demo-play-btn" class="demo-ctrl-btn">⏸ Pause</button>
+          <div class="demo-progress-track" id="demo-progress-track" title="Click anywhere to jump in the demo">
+            <div class="demo-progress-fill" id="demo-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="demo-step-tabs">
+          <button type="button" class="demo-step-tab is-active" data-time="0">01. Movement</button>
+          <button type="button" class="demo-step-tab" data-time="3.0">02. Archery</button>
+          <button type="button" class="demo-step-tab" data-time="6.0">03. Astras</button>
+          <button type="button" class="demo-step-tab" data-time="9.0">04. Wheel Fury</button>
+        </div>
+      </div>
+
+      <!-- Rules of the Vyuha (2x2 Grid — 2 Per Line) -->
+      <div class="controls-grid">
+        <div class="control-item">
+          <span class="control-num">01</span>
+          <h3 class="control-key">🕹️ MANEUVER & EVASION</h3>
+          <p class="control-desc">Use <strong>WASD / Arrow Keys</strong> to move. Press <strong>Right-Click or Shift</strong> for a swift Dodge Roll with invulnerability frames.</p>
+        </div>
+
+        <div class="control-item">
+          <span class="control-num">02</span>
+          <h3 class="control-key">🏹 PRECISION ARCHERY</h3>
+          <p class="control-desc">Aim with <strong>Mouse Cursor</strong> and hold <strong>Left-Click</strong> to fire Gandiva's golden piercing arrows into approaching enemy ranks.</p>
+        </div>
+
+        <div class="control-item">
+          <span class="control-num">03</span>
+          <h3 class="control-key">🌪️ CELESTIAL ASTRAS</h3>
+          <p class="control-desc">Channel Prana: press <strong>1 for Agneyastra 🔥</strong> (flame wave), <strong>2 for Varunastra 🌊</strong> (tidal blast), or <strong>3 for Vayuastra 🌪️</strong> (vortex pull).</p>
+        </div>
+
+        <div class="control-item">
+          <span class="control-num">04</span>
+          <h3 class="control-key">☸️ CHARIOT WHEEL FURY</h3>
+          <p class="control-desc">Press <strong>4 or Spacebar</strong> to wield the shattered chariot wheel. Gain temporary invincibility and unleash a crushing 360° sweep!</p>
+        </div>
+      </div>
+
+      <button class="modal-cta-btn" id="start-game-btn" type="button">
+        ⚔️ Enter the Chakravyuha
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= VEERA SWARGA (ASTRAL REALM) UPGRADE MODAL ================= -->
+  <div class="modal-overlay" id="veera-swarga-modal">
+    <div class="modal-card">
+      <p class="modal-eyebrow">Veera Swarga · Warrior's Astral Realm</p>
+      <h1 class="modal-title">The Soul Awakens</h1>
+      <p class="modal-lead">
+        The body has fallen, but your deeds echo across eternity. Meditate upon your memories, channel divine blessings, and prepare to pierce the formation again.
+      </p>
+
+      <div style="margin: 0.8rem 0 1rem; border-radius: 6px; overflow: hidden; border: 1px solid var(--gold); box-shadow: 0 0 20px rgba(209, 72, 31, 0.25);">
+        <img src="assets/img/abhimanyu_stand.jpg" alt="Abhimanyu fighting fiercely inside the Chakravyuha with bow and chariot wheel" style="width: 100%; height: auto; display: block; max-height: 180px; object-fit: cover;" />
+      </div>
+      <div style="margin: 0.8rem 0; padding: 0.75rem; background: rgba(201, 165, 92, 0.1); border: 1px solid var(--gold); border-radius: 4px; display: inline-flex; align-items: center; gap: 0.6rem;">
+        <span style="font-size: 1.2rem;">🔥</span>
+        <span style="font-family: var(--font-display); font-size: 0.85rem; color: var(--gold-bright);">
+          Karmic Embers (Punya): <strong id="punya-balance" style="font-size: 1.1rem; color: #f0d799;">0</strong>
+        </span>
+      </div>
+
+      <div class="upgrade-list" id="upgrade-list">
+        <!-- Rendered dynamically by main.js -->
+      </div>
+
+      <button class="modal-cta-btn" id="reincarnate-btn" type="button">
+        ⚡ Reincarnate & Breach Again
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= VICTORY MODAL ================= -->
+  <div class="modal-overlay" id="victory-modal">
+    <div class="modal-card">
+      <p class="modal-eyebrow">Dharma Prevails · The Myth Rewritten</p>
+      <h1 class="modal-title">The Unbreakable Broken</h1>
+      <p class="modal-lead">
+        Against impossible odds, you have penetrated all seven spinning tiers of Guru Drona’s Chakravyuha and withstood the coordinated assault of the six Maharathis.
+      </p>
+      <p style="color: var(--gold-bright); font-size: 1.1rem; line-height: 1.5; margin: 1.5rem 0;">
+        You have defied fate, preserved your honor, and secured an immortal legend in the annals of Kurukshetra.
+      </p>
+      <button class="modal-cta-btn" id="victory-restart-btn" type="button">
+        👑 Play Again
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Scripts -->
+  <script type="module" src="js/chakravyuha/main.js"></script>
+</body>
+</html>
